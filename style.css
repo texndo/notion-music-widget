@@ -1,86 +1,71 @@
-/* General Reset */
-*:focus {
-  outline: none;
-}
-
-body > iframe:first-child {
-  display: none !important;
+/* Reset and base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 body {
-  font-family: 'IBM Plex Mono', monospace;
-  margin: 0;
-  padding: 0;
-  background: transparent;
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
-}
 
-/* Player Container */
+/* App container */
 #app-cover {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 430px;
   height: auto;
 }
 
-/* Track Info Panel */
+/* Player core */
 #player {
   position: relative;
-  height: 100%;
   z-index: 3;
 }
 
+/* Track display */
 #player-track {
-  position: absolute;
-  top: 0;
-  left: 15px;
-  right: 15px;
-  padding: 13px 22px 10px 184px;
-  background-color: rgba(233, 243, 249, 0.9); /* soft pastel blue */
+  background-color: rgba(224, 240, 255, 0.85); /* pastel soft blue */
   border-radius: 15px 15px 0 0;
+  padding: 13px 22px 10px 184px;
   transition: 0.3s ease top;
-  z-index: 1;
-  backdrop-filter: blur(4px);
 }
 
 #player-track.active {
   top: -92px;
 }
 
-/* Song Title + Album */
 #album-name {
-  color: #2a2a2a;
+  color: #1a1a1a;
   font-size: 17px;
   font-weight: bold;
 }
 
 #track-name {
-  color: #444;
+  color: #4d4d4d;
   font-size: 13px;
   margin: 2px 0 13px 0;
 }
 
-/* Time Display */
 #track-time {
   height: 12px;
   margin-bottom: 3px;
   overflow: hidden;
+  display: flex;
+  justify-content: space-between;
 }
 
 #current-time,
 #track-length {
   font-size: 11px;
-  background-color: rgba(173, 216, 230, 0.25); /* light blue hover base */
+  background-color: rgba(173, 216, 230, 0.3);
   border-radius: 10px;
-  transition: 0.3s ease all;
   padding: 2px 6px;
   color: transparent;
+  transition: 0.3s ease all;
 }
 
 #track-time.active #current-time,
@@ -89,7 +74,7 @@ body {
   background-color: transparent;
 }
 
-/* Seek Bar */
+/* Seek bar */
 #s-area,
 #seek-bar {
   position: relative;
@@ -107,11 +92,11 @@ body {
   top: -29px;
   color: #fff;
   font-size: 12px;
-  white-space: pre;
   padding: 5px 6px;
   border-radius: 4px;
   background-color: #1a1a1a;
   display: none;
+  white-space: nowrap;
 }
 
 #s-hover {
@@ -119,50 +104,47 @@ body {
   top: 0;
   bottom: 0;
   left: 0;
-  opacity: 0.2;
   background-color: #3b3d50;
+  opacity: 0.2;
   z-index: 2;
 }
 
 #seek-bar {
-  content: '';
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   width: 0;
-  background-color: #91c7e4; /* main pastel blue accent */
+  background-color: #91c7e4; /* main pastel blue */
   transition: 0.2s ease width;
   z-index: 1;
 }
 
-/* Content Layout */
+/* Player content */
 #player-content {
+  background-color: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 0 0 15px 15px;
+  padding: 50px 0 20px;
   position: relative;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 1px 5px rgba(0,0,0,0.05);
-  border-radius: 15px;
-  z-index: 2;
 }
 
-/* Album Art */
+/* Album art */
 #album-art {
   position: absolute;
   top: -40px;
+  left: 40px;
   width: 115px;
   height: 115px;
-  margin-left: 40px;
-  transform: rotateZ(0);
-  transition: 0.3s ease all;
-  box-shadow: 0 0 0 10px #ffffff;
   border-radius: 50%;
   overflow: hidden;
+  box-shadow: 0 0 0 10px #ffffff;
+  transition: 0.3s ease all;
 }
 
 #album-art.active {
   top: -60px;
-  box-shadow: 0 0 0 4px #e9f3f9, 0 30px 50px -15px #afb7c1;
+  box-shadow: 0 0 0 4px #e0f0ff, 0 30px 50px -15px #afb7c1;
 }
 
 #album-art:before {
@@ -181,10 +163,10 @@ body {
 }
 
 #album-art img {
-  display: block;
-  position: absolute;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  position: absolute;
   top: 0;
   left: 0;
   opacity: 0;
@@ -197,7 +179,6 @@ body {
 }
 
 #album-art.active img.active {
-  z-index: 1;
   animation: rotateAlbumArt 3s linear infinite forwards;
 }
 
@@ -216,18 +197,16 @@ body {
   top: 50%;
   left: 0;
   right: 0;
-  height: 13px;
-  color: #1f1f1f;
-  font-size: 13px;
-  text-align: center;
-  font-weight: bold;
-  line-height: 1;
+  margin: -12px auto 0;
   padding: 6px;
-  margin: -12px auto 0 auto;
+  height: 13px;
+  color: #1a1a1a;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
   background-color: rgba(255, 255, 255, 0.19);
   opacity: 0;
   z-index: 2;
-  transition: 0.1s linear all;
 }
 
 #album-art.buffering img {
@@ -243,37 +222,36 @@ body {
   opacity: 1;
 }
 
-/* Player Controls */
+/* Controls */
 #player-controls {
   width: 250px;
-  height: 100%;
-  margin: 0 5px 0 141px;
-  float: right;
-  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
 }
 
 .control {
   width: 33.333%;
-  float: left;
-  padding: 12px 0;
+  text-align: center;
 }
 
 .button {
-  width: 26px;
-  height: 26px;
-  padding: 25px;
+  width: 40px;
+  height: 40px;
   background-color: #ffffff;
   border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .button i {
-  display: block;
   color: #91c7e4;
-  font-size: 26px;
-  text-align: center;
-  line-height: 1;
+  font-size: 20px;
   transition: color 0.2s ease;
 }
 
