@@ -8,10 +8,10 @@ body > iframe:first-child {
 }
 
 body {
-  font-family: 'Pretendard Variable', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Space Mono', monospace;
   margin: 0;
   background-color: transparent;
-  color: #1a1a1a;
+}
 }
 
 /* Player Container */
