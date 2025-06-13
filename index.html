@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Music Widget</title>
+
+  <!-- Font Awesome for the icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
+
+  <!-- Custom Font: Pretendard Variable (clean mono-K aesthetic) -->
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" rel="stylesheet" />
+
+  <!-- Link to your own stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="app-cover">
+    <div id="player">
+      <div id="player-track">
+        <div id="album-name"></div>
+        <div id="track-name"></div>
+        <div id="track-time">
+          <div id="current-time">00:00</div>
+          <div id="track-length">00:00</div>
+        </div>
+        <div id="s-area">
+          <div id="ins-time"></div>
+          <div id="s-hover"></div>
+          <div id="seek-bar"></div>
+        </div>
+      </div>
+
+      <div id="player-content">
+        <div id="album-art">
+          <img src="images/1.jpeg" class="active" id="_1" />
+          <img src="images/2.jpeg" id="_2" />
+          <img src="images/3.jpeg" id="_3" />
+          <img src="images/4.jpeg" id="_4" />
+          <img src="images/5.jpeg" id="_5" />
+          <img src="images/6.jpeg" id="_6" />
+          <img src="images/7.jpeg" id="_7" />
+          <img src="images/8.jpeg" id="_8" />
+          <img src="images/9.jpeg" id="_9" />
+          <img src="images/10.jpeg" id="_10" />
+          <img src="images/11.jpeg" id="_11" />
+          <img src="images/12.jpeg" id="_12" />
+          <div id="buffer-box">Buffering ...</div>
+        </div>
+
+        <div id="player-controls">
+          <div class="control">
+            <div class="button" id="play-previous">
+              <i class="fas fa-backward"></i>
+            </div>
+          </div>
+          <div class="control">
+            <div class="button" id="play-pause-button">
+              <i class="fas fa-play"></i>
+            </div>
+          </div>
+          <div class="control">
+            <div class="button" id="play-next">
+              <i class="fas fa-forward"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+  <!-- Link to your script -->
+  <script src="script.js"></script>
+</body>
+</html>
